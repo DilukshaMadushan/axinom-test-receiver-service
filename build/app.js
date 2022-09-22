@@ -32,11 +32,17 @@ const zipContent_route_1 = require("./routes/zipContent.route");
 const auth_route_1 = require("./routes/auth.route");
 const database_1 = require("./configs/database");
 const error_middleware_1 = require("./middleware/error.middleware");
+const cors_1 = __importDefault(require("cors"));
+const body_parser_1 = __importDefault(require("body-parser"));
 // Load environment variables
-dotenv.config({ path: "./configs/config.env" });
+dotenv.config();
 (0, database_1.connectDB)();
 const app = (0, express_1.default)();
 const port = 5001;
+//allow cors
+app.use((0, cors_1.default)());
+//set the max body size
+app.use(body_parser_1.default.json({ limit: "50mb" }));
 //Accept json
 app.use(express_1.default.json());
 app.use("/api/v1/zip-content", zipContent_route_1.zipRouter);

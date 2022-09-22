@@ -17,22 +17,13 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const logger_util_1 = require("../utils/logger.util");
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const mongoUrl = process.env.MONGO_URI;
+    console.log("url db ", mongoUrl);
     if (!mongoUrl) {
-        const conn = yield mongoose_1.default.connect("mongodb+srv://diluksha:diluksha123@cluster0.kgiqf6o.mongodb.net/testdb?retryWrites=true&w=majority", {
-        //   useNewUrlParser: true,
-        //   useCreateIndex: true,
-        //   useFindAndModify: false,
-        //   useUnifiedTopology: true,
-        });
+        const conn = yield mongoose_1.default.connect("mongodb+srv://diluksha:diluksha123@cluster0.kgiqf6o.mongodb.net/testdb?retryWrites=true&w=majority");
         logger_util_1.logger.info(`Mongo DB connected: ${conn.connection.host}`);
     }
     else {
-        const conn = yield mongoose_1.default.connect(mongoUrl, {
-        //   useNewUrlParser: true,
-        //   useCreateIndex: true,
-        //   useFindAndModify: false,
-        //   useUnifiedTopology: true,
-        });
+        const conn = yield mongoose_1.default.connect(mongoUrl);
         logger_util_1.logger.info(`Mongo DB connected: ${conn.connection.host}`);
     }
 });
