@@ -4,8 +4,7 @@ exports.errorHandler = void 0;
 const errorHandler = (err, req, res, next) => {
     let error = Object.assign({}, err);
     error.message = err.message;
-    // Log to console for the developer
-    console.log(err);
+    error.statusCode = err.statusCode;
     res.status(error.statusCode || 500).json({
         success: false,
         error: error.message || "Server Error",

@@ -38,7 +38,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 dotenv.config();
 (0, database_1.connectDB)();
 const app = (0, express_1.default)();
-const port = 5001;
+const port = process.env.PORT || 5001;
 //allow cors
 app.use((0, cors_1.default)());
 //set the max body size

@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "npx tsc && node build/app.js",
+    "start": "npx tsc && node build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
